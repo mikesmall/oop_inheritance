@@ -53,3 +53,37 @@ class Multilinguist
   end
 end
 
+class MathGenius < Multilinguist
+  # Instances of this class should be able to accept a list of numbers and return a sentence stating the sum of the numbers.
+  # Make use of the inherited Multilinguist methods to ensure this sentence will always be delivered in the local language.
+  def report_total(submitted_numbers)
+    total = submitted_numbers.inject(0){|sum,x| sum + x }
+      #  Found this method on StackOverflow.
+      #  '.sum' appears here in other students' work.
+      #  That method returns a NoMethod error for me. (?!)
+    msg = "The total of those numbers is #{ total }."
+    say_in_local_language(msg)
+  end#report_total
+end#MathGenius
+
+class QuoteCollector < Multilinguist
+
+  # The second child class we're going to define represents a person who loves to memorize quotes and then travel the world, unleashing poor translations of them to unsuspecting passers-by.
+
+  # Each instance of this class should have its own ever-growing collection of favourite quotes. It should have the ability to add a new quote to its collection as well as the ability to select a random quote to share in the local language.
+
+end#QuoteCollector
+
+
+
+# Test outputs:
+
+me = MathGenius.new
+
+puts me.report_total([23,45,676,34,5778,4,23,5465]) # The total is 12048
+
+me.travel_to("India")
+puts me.report_total([6,3,6,68,455,4,467,57,4,534]) # है को कुल 1604
+
+me.travel_to("Italy")
+puts me.report_total([324,245,6,343647,686545]) # È Il totale 1030767
